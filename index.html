@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Helena & Salvador — 21 de Agosto 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Josefin+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset & Base ─────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #F5F0EB;
+      --cream-dark: #EDE7E0;
+      --ink: #2C2824;
+      --ink-light: #5A5550;
+      --ink-faint: #9A9590;
+      --gold: #B8A88A;
+      --white: #FDFCFA;
+      --font-display: 'Cormorant Garamond', 'Georgia', serif;
+      --font-sans: 'Josefin Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--cream);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── Scroll Snap Sections ─────────────────── */
+    .section {
+      min-height: 100dvh;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 3rem 1.5rem;
+    }
+
+    /* ── Animations ────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes draw {
+      to { stroke-dashoffset: 0; }
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      transform: translateY(25px);
+    }
+
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── SECTION 1: Hero ──────────────────────── */
+    .hero {
+      background: var(--cream);
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero__illustration-top {
+      position: absolute;
+      top: 2rem;
+      right: 1.5rem;
+      width: 120px;
+      opacity: 0.85;
+    }
+
+    .hero__illustration-bottom {
+      position: absolute;
+      bottom: 2rem;
+      left: 1.5rem;
+      width: 110px;
+      opacity: 0.85;
+    }
+
+    .hero__names {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(3rem, 12vw, 5.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      animation: fadeUp 1.2s ease forwards;
+    }
+
+    .hero__ampersand {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(2.5rem, 10vw, 4.5rem);
+      color: var(--ink-light);
+      display: block;
+      margin: 0.1em 0;
+    }
+
+    .hero__date {
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-size: clamp(0.85rem, 3vw, 1.1rem);
+      letter-spacing: 0.15em;
+      color: var(--ink-light);
+      margin-top: 2rem;
+      animation: fadeUp 1.2s 0.4s ease forwards;
+      opacity: 0;
+    }
+
+    /* ── SECTION 2: Ceremonia & Celebración ───── */
+    .venues {
+      background: var(--cream);
+    }
+
+    .venues__photo {
+      width: 100%;
+      max-width: 420px;
+      height: 200px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .venues__photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%) brightness(0.85);
+    }
+
+    .venues__card {
+      background: var(--white);
+      border-radius: 2px;
+      padding: 2.5rem 2rem;
+      max-width: 380px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 2px 20px rgba(44,40,36,0.06);
+      position: relative;
+      z-index: 2;
+      margin-top: -3rem;
+    }
+
+    .venues__label {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 0.8rem;
+    }
+
+    .venues__name {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 1.2rem;
+    }
+
+    .venues__btn {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      border: 1.5px solid var(--ink);
+      border-radius: 50px;
+      padding: 0.7rem 1.8rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      background: transparent;
+    }
+
+    .venues__btn:hover {
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    .venues__divider {
+      width: 1px;
+      height: 50px;
+      background: var(--ink-faint);
+      opacity: 0.3;
+      margin: 2rem 0;
+    }
+
+    /* ── SECTION 3: Timeline ──────────────────── */
+    .timeline {
+      background: var(--cream);
+    }
+
+    .timeline__list {
+      list-style: none;
+      max-width: 340px;
+      width: 100%;
+    }
+
+    .timeline__item {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.8rem 0;
+      position: relative;
+    }
+
+    .timeline__item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 1px;
+      background: var(--ink-faint);
+      opacity: 0.25;
+    }
+
+    .timeline__item:nth-child(odd) { flex-direction: row; }
+    .timeline__item:nth-child(even) { flex-direction: row-reverse; }
+
+    .timeline__icon {
+      width: 80px;
+      height: 80px;
+      flex-shrink: 0;
+    }
+
+    .timeline__icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .timeline__info {
+      text-align: center;
+      flex: 1;
+    }
+
+    .timeline__event {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 1.4rem;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+    }
+
+    .timeline__time {
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      color: var(--ink-light);
+    }
+
+    /* ── SECTION 4: RSVP ──────────────────────── */
+    .rsvp {
+      background: var(--cream);
+    }
+
+    .rsvp__illustration {
+      width: 70px;
+      margin-bottom: 2rem;
+      opacity: 0.7;
+    }
+
+    .rsvp__form {
+      max-width: 360px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .rsvp__input, .rsvp__select {
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      background: transparent;
+      border: 1.5px solid var(--ink-faint);
+      border-radius: 50px;
+      padding: 1rem 1.5rem;
+      outline: none;
+      transition: border-color 0.3s ease;
+      width: 100%;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .rsvp__input::placeholder {
+      color: var(--ink-faint);
+    }
+
+    .rsvp__input:focus, .rsvp__select:focus {
+      border-color: var(--ink);
+    }
+
+    .rsvp__select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%239A9590' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1.5rem center;
+      padding-right: 3rem;
+      color: var(--ink-faint);
+    }
+
+    .rsvp__select.filled {
+      color: var(--ink);
+    }
+
+    .rsvp__submit {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--ink-light);
+      border: none;
+      border-radius: 50px;
+      padding: 1.1rem 2rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 0.5rem;
+    }
+
+    .rsvp__submit:hover {
+      background: var(--ink);
+    }
+
+    .rsvp__bird {
+      position: absolute;
+      bottom: 2rem;
+      right: 1.5rem;
+      width: 100px;
+      opacity: 0.6;
+    }
+
+    /* ── SECTION 5: FAQ ───────────────────────── */
+    .faq {
+      background: var(--cream);
+    }
+
+    .faq__icon {
+      width: 40px;
+      margin-bottom: 2rem;
+      opacity: 0.7;
+    }
+
+    .faq__list {
+      max-width: 380px;
+      width: 100%;
+    }
+
+    .faq__item {
+      border-bottom: 1px solid rgba(44,40,36,0.12);
+    }
+
+    .faq__question {
+      font-family: var(--font-sans);
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: var(--ink);
+      padding: 1.2rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      transition: color 0.3s ease;
+    }
+
+    .faq__question:hover {
+      color: var(--ink-light);
+    }
+
+    .faq__toggle {
+      font-size: 1.3rem;
+      font-weight: 300;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+      margin-left: 1rem;
+    }
+
+    .faq__item.active .faq__toggle {
+      transform: rotate(45deg);
+    }
+
+    .faq__answer {
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: var(--ink-light);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      padding: 0 0;
+    }
+
+    .faq__item.active .faq__answer {
+      max-height: 200px;
+      padding: 0 0 1.2rem 0;
+    }
+
+    .faq__flower {
+      width: 120px;
+      margin-top: 2.5rem;
+      opacity: 0.65;
+    }
+
+    /* ── SECTION 6: Regalo ─────────────────────── */
+    .gift {
+      background: var(--ink-light);
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .gift__photo-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .gift__photo-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%) brightness(0.4);
+      opacity: 0.6;
+    }
+
+    .gift__content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 380px;
+    }
+
+    .gift__title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.8rem, 6vw, 2.5rem);
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+
+    .gift__text {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      opacity: 0.85;
+      margin-bottom: 2rem;
+    }
+
+    .gift__iban {
+      font-family: var(--font-sans);
+      font-weight: 400;
+      font-size: 0.9rem;
+      letter-spacing: 0.2em;
+      padding: 1rem;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      position: relative;
+    }
+
+    .gift__iban:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .gift__copy-hint {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      opacity: 0.5;
+      margin-bottom: 2.5rem;
+    }
+
+    .gift__footer {
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .gift__bow {
+      width: 150px;
+      margin-bottom: 0.8rem;
+      opacity: 0.6;
+    }
+
+    .gift__names {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 1.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Navigation Dots ──────────────────────── */
+    .nav-dots {
+      position: fixed;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 100;
+    }
+
+    .nav-dots__dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--ink-faint);
+      opacity: 0.3;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .nav-dots__dot.active {
+      opacity: 1;
+      background: var(--ink);
+      transform: scale(1.3);
+    }
+
+    .nav-dots--light .nav-dots__dot {
+      background: var(--white);
+    }
+
+    /* ── Scroll indicator ─────────────────────── */
+    .scroll-hint {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      opacity: 0.4;
+      animation: fadeIn 1.5s 1.5s ease forwards;
+      opacity: 0;
+    }
+
+    .scroll-hint__text {
+      font-family: var(--font-sans);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .scroll-hint__arrow {
+      width: 16px;
+      height: 16px;
+      animation: bounceDown 2s infinite;
+    }
+
+    @keyframes bounceDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(5px); }
+    }
+
+    /* ── Responsive ───────────────────────────── */
+    @media (min-width: 768px) {
+      .section { padding: 4rem 2rem; }
+      .hero__illustration-top { width: 160px; top: 3rem; right: 3rem; }
+      .hero__illustration-bottom { width: 140px; bottom: 3rem; left: 3rem; }
+      .venues__photo { height: 260px; }
+    }
+
+    @media (max-width: 380px) {
+      .hero__names { font-size: 2.6rem; }
+      .timeline__icon { width: 60px; height: 60px; }
+      .nav-dots { right: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Dots -->
+  <nav class="nav-dots" id="navDots">
+    <button class="nav-dots__dot active" data-section="0" aria-label="Inicio"></button>
+    <button class="nav-dots__dot" data-section="1" aria-label="Lugares"></button>
+    <button class="nav-dots__dot" data-section="2" aria-label="Horarios"></button>
+    <button class="nav-dots__dot" data-section="3" aria-label="Confirmar"></button>
+    <button class="nav-dots__dot" data-section="4" aria-label="Preguntas"></button>
+    <button class="nav-dots__dot" data-section="5" aria-label="Regalo"></button>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SECTION 1: HERO                            -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="section hero" id="hero">
+
+    <!-- Candelabros (top right) -->
+    <svg class="hero__illustration-top" viewBox="0 0 140 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#2C2824" stroke-width="1.2" stroke-linecap="round" fill="none">
+        <!-- Candle 1 -->
+        <line x1="35" y1="10" x2="35" y2="45"/>
+        <ellipse cx="35" cy="50" rx="8" ry="3"/>
+        <line x1="27" y1="50" x2="27" y2="65"/>
+        <line x1="43" y1="50" x2="43" y2="65"/>
+        <ellipse cx="35" cy="68" rx="12" ry="4"/>
+        <line x1="35" y1="72" x2="35" y2="85"/>
+        <ellipse cx="35" cy="88" rx="16" ry="5"/>
+        <!-- Flame -->
+        <path d="M35 10 Q38 4 35 1 Q32 4 35 10" stroke-width="1"/>
+        <!-- Bow -->
+        <path d="M50 55 Q58 48 65 55 Q58 62 50 55" stroke-width="1"/>
+        <path d="M65 55 Q73 48 80 55 Q73 62 65 55" stroke-width="1"/>
+        <line x1="65" y1="55" x2="65" y2="70"/>
+        <!-- Candle 2 -->
+        <line x1="105" y1="20" x2="105" y2="50"/>
+        <ellipse cx="105" cy="55" rx="7" ry="3"/>
+        <line x1="98" y1="55" x2="98" y2="68"/>
+        <line x1="112" y1="55" x2="112" y2="68"/>
+        <ellipse cx="105" cy="72" rx="14" ry="5"/>
+        <line x1="105" y1="77" x2="105" y2="90"/>
+        <ellipse cx="105" cy="93" rx="18" ry="5"/>
+        <path d="M105 20 Q108 14 105 11 Q102 14 105 20" stroke-width="1"/>
+        <!-- Bow 2 -->
+        <path d="M115 40 Q122 34 128 40 Q122 46 115 40" stroke-width="1"/>
+        <path d="M128 40 Q135 34 140 40 Q135 46 128 40" stroke-width="1"/>
+      </g>
+    </svg>
+
+    <!-- Copa (bottom left) -->
+    <svg class="hero__illustration-bottom" viewBox="0 0 120 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#2C2824" stroke-width="1.2" stroke-linecap="round" fill="none">
+        <path d="M20 10 Q25 60 60 70 Q95 60 100 10" />
+        <path d="M20 10 Q60 25 100 10" />
+        <line x1="60" y1="70" x2="60" y2="100"/>
+        <ellipse cx="60" cy="105" rx="25" ry="6"/>
+        <!-- Decorative lines -->
+        <path d="M30 25 Q60 40 90 25" stroke-dasharray="3 4"/>
+        <path d="M35 40 Q60 52 85 40" stroke-dasharray="3 4"/>
+        <!-- Bow -->
+        <path d="M70 85 Q78 78 85 85 Q78 92 70 85" stroke-width="1"/>
+        <path d="M85 85 Q93 78 100 85 Q93 92 85 85" stroke-width="1"/>
+        <path d="M85 85 Q87 95 85 105" stroke-width="1"/>
+      </g>
+    </svg>
+
+    <div>
+      <h1 class="hero__names">
+        Helena
+        <span class="hero__ampersand">&</span>
+        Salvador
+      </h1>
+      <p class="hero__date">21 de Agosto 2026</p>
+    </div>
+
+    <div class="scroll-hint">
+      <span class="scroll-hint__text">Scroll</span>
+      <svg class="scroll-hint__arrow" viewBox="0 0 16 16" fill="none" stroke="#2C2824" stroke-width="1.2">
+        <path d="M3 6l5 5 5-5"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SECTION 2: CEREMONIA & CELEBRACIÓN          -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="section venues" id="venues">
+    <div class="venues__card animate-on-scroll">
+      <p class="venues__label">Ceremonia</p>
+      <h2 class="venues__name">Monasterio<br>de Santa María del Puig</h2>
+      <a href="https://maps.google.com/?q=Basilica+Pontificia+de+San+Miguel+Madrid" target="_blank" rel="noopener" class="venues__btn">¿Cómo llegar?</a>
+    </div>
+
+    <div class="venues__divider"></div>
+
+    <div class="venues__card animate-on-scroll">
+      <p class="venues__label">Celebración</p>
+      <h2 class="venues__name">Masía<br>Campo<br>Aníbal</h2>
+      <a href="https://maps.google.com/?q=Palacio+Fresneda" target="_blank" rel="noopener" class="venues__btn">¿Cómo llegar?</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SECTION 3: TIMELINE                         -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="section timeline" id="timeline">
+    <ul class="timeline__list">
+
+      <!-- Ceremonia -->
+      <li class="timeline__item animate-on-scroll">
+        <svg class="timeline__icon" viewBox="0 0 80 80" fill="none" stroke="#2C2824" stroke-width="1.1" stroke-linecap="round">
+          <ellipse cx="40" cy="40" rx="22" ry="8" transform="rotate(-30 40 40)"/>
+          <ellipse cx="40" cy="40" rx="22" ry="8" transform="rotate(30 40 40)"/>
+          <path d="M30 38 Q35 32 40 35 Q45 32 50 38" stroke-width="0.8"/>
+        </svg>
+        <div class="timeline__info">
+          <p class="timeline__event">Ceremonia</p>
+          <p class="timeline__time">18:00h</p>
+        </div>
+      </li>
+
+      <!-- Cóctel -->
+      <li class="timeline__item animate-on-scroll">
+        <div class="timeline__info">
+          <p class="timeline__event">Cóctel</p>
+          <p class="timeline__time">20:00h</p>
+        </div>
+        <svg class="timeline__icon" viewBox="0 0 80 80" fill="none" stroke="#2C2824" stroke-width="1.1" stroke-linecap="round">
+          <path d="M25 20 L40 45 L55 20"/>
+          <line x1="40" y1="45" x2="40" y2="65"/>
+          <line x1="30" y1="65" x2="50" y2="65"/>
+          <circle cx="45" cy="28" r="3" stroke-width="0.8"/>
+          <line x1="45" y1="20" x2="45" y2="25"/>
+          <!-- Bow -->
+          <path d="M42 40 Q46 36 50 40 Q46 44 42 40" stroke-width="0.8"/>
+        </svg>
+      </li>
+
+      <!-- Cena -->
+      <li class="timeline__item animate-on-scroll">
+        <svg class="timeline__icon" viewBox="0 0 80 80" fill="none" stroke="#2C2824" stroke-width="1.1" stroke-linecap="round">
+          <!-- Plate -->
+          <circle cx="40" cy="42" r="18"/>
+          <circle cx="40" cy="42" r="13" stroke-dasharray="2 3"/>
+          <!-- Fork -->
+          <line x1="15" y1="25" x2="15" y2="62"/>
+          <line x1="12" y1="25" x2="12" y2="35"/>
+          <line x1="15" y1="25" x2="15" y2="35"/>
+          <line x1="18" y1="25" x2="18" y2="35"/>
+          <!-- Knife -->
+          <line x1="65" y1="25" x2="65" y2="62"/>
+          <path d="M65 25 Q70 30 68 40 L65 42"/>
+        </svg>
+        <div class="timeline__info">
+          <p class="timeline__event">Cena</p>
+          <p class="timeline__time">21:30h</p>
+        </div>
+      </li>
+
+      <!-- Fiesta -->
+      <li class="timeline__item animate-on-scroll">
+        <div class="timeline__info">
+          <p class="timeline__event">Fiesta</p>
+          <p class="timeline__time">23:30h</p>
+        </div>
+        <svg class="timeline__icon" viewBox="0 0 80 80" fill="none" stroke="#2C2824" stroke-width="1.1" stroke-linecap="round">
+          <circle cx="40" cy="40" r="20"/>
+          <ellipse cx="40" cy="40" rx="20" ry="8"/>
+          <ellipse cx="40" cy="40" rx="8" ry="20"/>
+          <path d="M22 30 Q40 35 58 30" stroke-width="0.7"/>
+          <path d="M22 50 Q40 45 58 50" stroke-width="0.7"/>
+          <!-- Sparkle -->
+          <line x1="65" y1="15" x2="65" y2="25"/>
+          <line x1="60" y1="20" x2="70" y2="20"/>
+          <line x1="70" y1="60" x2="75" y2="55" stroke-width="0.8"/>
+          <line x1="70" y1="55" x2="75" y2="60" stroke-width="0.8"/>
+        </svg>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SECTION 4: RSVP                             -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="section rsvp" id="rsvp">
+    <!-- Pear illustration -->
+    <svg class="rsvp__illustration" viewBox="0 0 60 70" fill="none" stroke="#2C2824" stroke-width="1.1" stroke-linecap="round">
+      <path d="M30 15 Q10 30 15 50 Q20 65 30 65 Q40 65 45 50 Q50 30 30 15"/>
+      <path d="M30 15 Q28 8 32 5"/>
+      <path d="M32 5 Q38 8 35 14" stroke-width="0.8"/>
+      <path d="M25 35 Q30 30 35 35" stroke-width="0.8"/>
+    </svg>
+
+    <div class="rsvp__form animate-on-scroll" id="rsvpForm">
+      <input class="rsvp__input" type="text" placeholder="Nombre y Apellidos" required>
+      <input class="rsvp__input" type="text" placeholder="Nombre y Apellidos Acompañante">
+
+      <select class="rsvp__select" onchange="this.classList.toggle('filled', this.value !== '')">
+        <option value="">¿Necesitarás Servicio de autobús?</option>
+        <option value="si">Sí, por favor</option>
+        <option value="no">No, gracias</option>
+      </select>
+
+      <input class="rsvp__input" type="text" placeholder="¿Tienes alguna intolerancia?">
+
+      <button class="rsvp__submit" type="button" onclick="handleRSVP()">RSVP</button>
+    </div>
+
+    <!-- Bird illustration -->
+    <svg class="rsvp__bird" viewBox="0 0 100 90" fill="none" stroke="#2C2824" stroke-width="1.2" stroke-linecap="round">
+      <path d="M50 30 Q30 15 20 25 Q10 35 25 40 Q15 50 25 55 Q35 60 40 50"/>
+      <path d="M50 30 Q60 20 70 25 Q80 35 65 40"/>
+      <path d="M40 50 L50 70 L45 50"/>
+      <path d="M50 70 L55 50"/>
+      <circle cx="30" cy="30" r="2" fill="#2C2824"/>
+      <path d="M20 25 L12 22"/>
+      <!-- Wing lines -->
+      <path d="M45 35 Q55 30 65 35" stroke-width="0.8"/>
+      <path d="M45 38 Q55 34 62 38" stroke-width="0.8"/>
+    </svg>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SECTION 5: FAQ                              -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="section faq" id="faq">
+    <!-- Hand wave icon -->
+    <svg class="faq__icon" viewBox="0 0 40 45" fill="none" stroke="#2C2824" stroke-width="1.1" stroke-linecap="round">
+      <path d="M20 5 Q18 2 20 0"/>
+      <path d="M15 8 Q12 6 14 3"/>
+      <path d="M25 8 Q28 6 26 3"/>
+      <path d="M10 15 Q8 20 10 30 Q12 38 20 42 Q28 38 30 30 Q32 20 30 15"/>
+      <path d="M14 20 L14 30" stroke-width="0.8"/>
+      <path d="M20 18 L20 30" stroke-width="0.8"/>
+      <path d="M26 20 L26 30" stroke-width="0.8"/>
+    </svg>
+
+    <div class="faq__list animate-on-scroll">
+      <div class="faq__item">
+        <button class="faq__question">
+          ¿Pueden ir niños?
+          <span class="faq__toggle">+</span>
+        </button>
+        <div class="faq__answer">
+          Nos encantaría que este día fuera solo para adultos. Esperamos que lo entendáis y podáis disfrutar de una noche sin preocupaciones.
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__question">
+          ¿Cuál es el dresscode?
+          <span class="faq__toggle">+</span>
+        </button>
+        <div class="faq__answer">
+          Elegante. Caballeros con traje y corbata. Señoras con vestido largo o cóctel. Evitar el color blanco, por favor.
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__question">
+          ¿A qué hora son los buses?
+          <span class="faq__toggle">+</span>
+        </button>
+        <div class="faq__answer">
+          Habrá autobuses de ida desde Madrid centro a las 16:00h. Los buses de vuelta saldrán a las 3:00h y a las 5:00h.
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__question">
+          ¿Dónde me puedo peinar?
+          <span class="faq__toggle">+</span>
+        </button>
+        <div class="faq__answer">
+          Os compartiremos una lista de peluquerías y centros de estética recomendados cerca de la zona. ¡Estad atentos!
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__question">
+          ¿Y si tengo más preguntas?
+          <span class="faq__toggle">+</span>
+        </button>
+        <div class="faq__answer">
+          No dudes en escribirnos directamente al teléfono. Estaremos encantados de resolver cualquier duda.
+        </div>
+      </div>
+    </div>
+
+    <!-- Flower vase -->
+    <svg class="faq__flower" viewBox="0 0 120 140" fill="none" stroke="#2C2824" stroke-width="1.1" stroke-linecap="round">
+      <!-- Vase -->
+      <path d="M35 85 Q30 100 35 120 Q40 135 60 135 Q80 135 85 120 Q90 100 85 85"/>
+      <path d="M35 85 Q60 92 85 85"/>
+      <!-- Flowers -->
+      <path d="M50 85 Q48 60 40 45"/>
+      <path d="M60 85 Q60 55 60 35"/>
+      <path d="M70 85 Q72 60 80 45"/>
+      <path d="M45 85 Q40 65 35 55"/>
+      <path d="M75 85 Q80 65 85 55"/>
+      <!-- Petals -->
+      <circle cx="40" cy="42" r="5" stroke-width="0.8"/>
+      <circle cx="60" cy="32" r="6" stroke-width="0.8"/>
+      <circle cx="80" cy="42" r="5" stroke-width="0.8"/>
+      <circle cx="35" cy="52" r="4" stroke-width="0.8"/>
+      <circle cx="85" cy="52" r="4" stroke-width="0.8"/>
+      <!-- Leaves -->
+      <path d="M48 65 Q42 60 38 65 Q42 70 48 65" stroke-width="0.8"/>
+      <path d="M72 65 Q78 60 82 65 Q78 70 72 65" stroke-width="0.8"/>
+      <path d="M55 50 Q50 45 48 50 Q52 53 55 50" stroke-width="0.8"/>
+      <path d="M65 55 Q70 50 72 55 Q68 58 65 55" stroke-width="0.8"/>
+    </svg>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SECTION 6: REGALO / DESPEDIDA               -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="section gift" id="gift">
+    <!-- Background: replace src with your couple photo -->
+    <div class="gift__photo-bg">
+      <!-- REEMPLAZAR: pon aquí la URL de vuestra foto -->
+      <div style="width:100%;height:100%;background:linear-gradient(135deg,#4a4540 0%,#2C2824 100%)"></div>
+    </div>
+
+    <div class="gift__content animate-on-scroll">
+      <h2 class="gift__title">Vuestro amor no<br>tiene precio</h2>
+      <p class="gift__text">Si además queréis tener un detalle con nosotros, aquí os dejamos nuestro número de cuenta</p>
+
+      <div class="gift__iban" onclick="copyIBAN()" id="ibanBox">
+        ES00 0000 0000 0000 0000 0000
+      </div>
+      <p class="gift__copy-hint" id="copyHint">Toca para copiar</p>
+
+      <div class="gift__footer">
+        <!-- Bow ribbon -->
+        <svg class="gift__bow" viewBox="0 0 160 40" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1" stroke-linecap="round">
+          <path d="M10 20 Q40 5 80 20 Q120 35 150 20"/>
+          <path d="M70 20 Q75 12 80 20 Q85 12 90 20" stroke-width="0.8"/>
+          <path d="M75 20 Q78 28 80 20 Q82 28 85 20" stroke-width="0.8"/>
+          <path d="M80 20 L78 30"/>
+          <path d="M80 20 L82 30"/>
+        </svg>
+        <p class="gift__names">Helena & Salvador</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // ── Scroll Observer for animations ──────────
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+    // ── Navigation Dots ─────────────────────────
+    const sections = document.querySelectorAll('.section');
+    const dots = document.querySelectorAll('.nav-dots__dot');
+    const navContainer = document.getElementById('navDots');
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const index = [...sections].indexOf(entry.target);
+          dots.forEach((d, i) => d.classList.toggle('active', i === index));
+
+          // Change dot color for dark sections
+          if (entry.target.classList.contains('gift')) {
+            navContainer.classList.add('nav-dots--light');
+          } else {
+            navContainer.classList.remove('nav-dots--light');
+          }
+        }
+      });
+    }, { threshold: 0.5 });
+
+    sections.forEach(s => sectionObserver.observe(s));
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const idx = parseInt(dot.dataset.section);
+        sections[idx].scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // ── FAQ Accordion ───────────────────────────
+    document.querySelectorAll('.faq__question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const wasActive = item.classList.contains('active');
+
+        // Close all
+        document.querySelectorAll('.faq__item').forEach(i => i.classList.remove('active'));
+
+        // Open clicked (if wasn't open)
+        if (!wasActive) item.classList.add('active');
+      });
+    });
+
+    // ── Copy IBAN ───────────────────────────────
+    function copyIBAN() {
+      const iban = document.getElementById('ibanBox').textContent.trim();
+      navigator.clipboard.writeText(iban).then(() => {
+        const hint = document.getElementById('copyHint');
+        hint.textContent = '¡Copiado!';
+        hint.style.opacity = '0.8';
+        setTimeout(() => {
+          hint.textContent = 'Toca para copiar';
+          hint.style.opacity = '0.5';
+        }, 2000);
+      });
+    }
+
+    // ── RSVP Handler ────────────────────────────
+    function handleRSVP() {
+      const form = document.getElementById('rsvpForm');
+      const inputs = form.querySelectorAll('.rsvp__input');
+      const name = inputs[0].value.trim();
+
+      if (!name) {
+        inputs[0].style.borderColor = '#c0392b';
+        inputs[0].focus();
+        setTimeout(() => inputs[0].style.borderColor = '', 2000);
+        return;
+      }
+
+      // ══════════════════════════════════════════
+      // AQUÍ PUEDES CONECTAR:
+      // - Google Forms (iframe o redirect)
+      // - Tally.so
+      // - Formspree.io
+      // - Tu propio backend
+      // ══════════════════════════════════════════
+
+      const btn = form.querySelector('.rsvp__submit');
+      btn.textContent = '¡CONFIRMADO!';
+      btn.style.background = '#5A7A5A';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        btn.textContent = 'RSVP';
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 3000);
+    }
+
+    // ── Hide scroll hint after first scroll ─────
+    let scrolled = false;
+    window.addEventListener('scroll', () => {
+      if (!scrolled) {
+        scrolled = true;
+        const hint = document.querySelector('.scroll-hint');
+        if (hint) hint.style.opacity = '0';
+      }
+    }, { passive: true });
+  </script>
+</body>
+</html>
