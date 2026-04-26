@@ -33,7 +33,6 @@
 
 :root {
   --cream: #F5F0EB;
-  --cream-dark: #EDE7E0;
   --ink: #2C2824;
   --ink-light: #5A5550;
   --ink-faint: #9A9590;
@@ -205,7 +204,7 @@ body {
 
 /* ── SECTION 2: Ceremonia & Celebración ───── */
 .venues {
-  background: var(--cream);
+  background: #EDE6DC;
 }
 
 .venues__photo {
@@ -289,7 +288,7 @@ body {
 
 /* ── SECTION 3: RSVP ──────────────────────── */
 .rsvp {
-  background: var(--cream);
+  background: #EDE6DC;
 }
 
 .rsvp__illustration {
@@ -373,7 +372,7 @@ body {
 
 /* ── SECTION 5: FAQ ───────────────────────── */
 .faq {
-  background: var(--cream);
+  background: #EDE6DC;
 }
 
 .faq__icon {
