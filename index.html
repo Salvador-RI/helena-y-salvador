@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Helena & Salvador — 21 de Agosto 2026</title>
+  <!-- Adobe Fonts (Typekit): sustituye SRC por el embed URL de tu proyecto en fonts.adobe.com -->
+  <!-- <link rel="stylesheet" href="https://use.typekit.net/XXXXXXX.css"> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Josefin+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation Dots -->
+  <nav class="nav-dots" id="navDots">
+    <button class="nav-dots__dot active" data-section="0" aria-label="Inicio"></button>
+    <button class="nav-dots__dot" data-section="1" aria-label="Lugares"></button>
+    <button class="nav-dots__dot" data-section="2" aria-label="Confirmar"></button>
+    <button class="nav-dots__dot" data-section="3" aria-label="Preguntas"></button>
+    <button class="nav-dots__dot" data-section="4" aria-label="Regalo"></button>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SECTION 1: HERO                            -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="section hero" id="hero">
+
+    <div class="hero__content">
+      <p class="hero__tagline">¡Nos casamos!</p>
+      <img class="hero__boceto" src="img/fachada-monasterio-2.png" alt="Fachada del Monasterio de Santa María del Puig">
+      <h1 class="hero__names">Helena y Salvador</h1>
+      <p class="hero__subtitle">Y nada nos haría más felices que vuestra presencia</p>
+      <p class="hero__date">21 de agosto de 2026</p>
+      <p class="hero__details">
+        La ceremonia religiosa tendrá lugar a las 18:00h<br>
+        en el Monasterio de Santa María del Puig.<br>
+        Continuaremos la celebración en la Masía Campo Aníbal.
+      </p>
+      <p class="hero__closing">¡Os esperamos!</p>
+    </div>
+
+    <div class="scroll-hint">
+      <span class="scroll-hint__text">Scroll</span>
+      <svg class="scroll-hint__arrow" viewBox="0 0 16 16" fill="none" stroke="#2C2824" stroke-width="1.2">
+        <path d="M3 6l5 5 5-5"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SECTION 2: CEREMONIA & CELEBRACIÓN          -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="section venues" id="venues">
+    <div class="venues__card animate-on-scroll">
+      <p class="venues__label">Ceremonia</p>
+      <h2 class="venues__name">Monasterio<br>de Santa María del Puig</h2>
+      <a href="https://maps.app.goo.gl/3rXCXRKew3mTD3fW7" target="_blank" rel="noopener" class="venues__btn">¿Cómo llegar?</a>
+    </div>
+
+    <div class="venues__divider"></div>
+
+    <div class="venues__card animate-on-scroll">
+      <p class="venues__label">Celebración</p>
+      <h2 class="venues__name">Masía<br>Campo<br>Aníbal</h2>
+      <a href="https://maps.app.goo.gl/9jCXExhd7ikzX8YW8" target="_blank" rel="noopener" class="venues__btn">¿Cómo llegar?</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SECTION 3: RSVP                             -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="section rsvp" id="rsvp">
+    <img class="rsvp__illustration" src="img/logo-hys.png" alt="Helena y Salvador">
+
+    <div class="rsvp__form animate-on-scroll" id="rsvpForm">
+      <input class="rsvp__input" type="text" placeholder="Nombre y Apellidos" required>
+      <input class="rsvp__input" type="text" placeholder="Nombre y Apellidos Acompañante">
+
+      <select class="rsvp__select" onchange="this.classList.toggle('filled', this.value !== '')">
+        <option value="">¿Necesitarás Servicio de autobús?</option>
+        <option value="si">Sí, por favor</option>
+        <option value="no">No, gracias</option>
+      </select>
+
+      <input class="rsvp__input" type="text" placeholder="¿Tienes alguna intolerancia?">
+
+      <button class="rsvp__submit" type="button" onclick="handleRSVP()">RSVP</button>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SECTION 5: FAQ                              -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="section faq" id="faq">
+    <img class="faq__icon" src="img/logo-hys.png" alt="Helena y Salvador">
+
+    <div class="faq__list animate-on-scroll">
+      <div class="faq__item">
+        <button class="faq__question">
+          ¿Pueden ir niños?
+          <span class="faq__toggle">+</span>
+        </button>
+        <div class="faq__answer">
+          Nos encantaría que este día fuera solo para adultos. Esperamos que lo entendáis y podáis disfrutar de una noche sin preocupaciones.
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__question">
+          ¿Cuál es el dresscode?
+          <span class="faq__toggle">+</span>
+        </button>
+        <div class="faq__answer">
+          Elegante. Caballeros con traje, zapatos oscuros y corbata. Señoras con vestido largo, evitando el color blanco y colores similares.
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__question">
+          ¿Habrá servicio de buses?
+          <span class="faq__toggle">+</span>
+        </button>
+        <div class="faq__answer">
+          Habrá autobuses de ida y vuelta desde Cullera y Valencia.
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__question">
+          ¿Y si tengo más preguntas?
+          <span class="faq__toggle">+</span>
+        </button>
+        <div class="faq__answer">
+          No dudes en escribirnos directamente al teléfono. Estaremos encantados de resolver cualquier duda.
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SECTION 6: REGALO / DESPEDIDA               -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="section gift" id="gift">
+    <div class="gift__photo-bg">
+      <img src="img/fondo-pago.jpg" alt="">
+    </div>
+
+    <div class="gift__content animate-on-scroll">
+      <h2 class="gift__title">Vuestro amor no<br> tiene precio</h2>
+      <p class="gift__text">Si además queréis tener un detalle con nosotros, aquí os dejamos nuestro número de cuenta</p>
+
+      <div class="gift__iban" onclick="copyIBAN()" id="ibanBox">
+        ES00 0000 0000 0000 0000 0000
+      </div>
+      <p class="gift__copy-hint" id="copyHint">Toca para copiar</p>
+
+      <div class="gift__footer">
+        <!-- Bow ribbon -->
+        <svg class="gift__bow" viewBox="0 0 160 40" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1" stroke-linecap="round">
+          <path d="M10 20 Q40 5 80 20 Q120 35 150 20"/>
+          <path d="M70 20 Q75 12 80 20 Q85 12 90 20" stroke-width="0.8"/>
+          <path d="M75 20 Q78 28 80 20 Q82 28 85 20" stroke-width="0.8"/>
+          <path d="M80 20 L78 30"/>
+          <path d="M80 20 L82 30"/>
+        </svg>
+        <p class="gift__names">Helena & Salvador</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // ── Scroll Observer for animations ──────────
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+    // ── Navigation Dots ─────────────────────────
+    const sections = document.querySelectorAll('.section');
+    const dots = document.querySelectorAll('.nav-dots__dot');
+    const navContainer = document.getElementById('navDots');
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const index = [...sections].indexOf(entry.target);
+          dots.forEach((d, i) => d.classList.toggle('active', i === index));
+
+          // Change dot color for dark sections
+          if (entry.target.classList.contains('gift')) {
+            navContainer.classList.add('nav-dots--light');
+          } else {
+            navContainer.classList.remove('nav-dots--light');
+          }
+        }
+      });
+    }, { threshold: 0.5 });
+
+    sections.forEach(s => sectionObserver.observe(s));
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const idx = parseInt(dot.dataset.section);
+        sections[idx].scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // ── FAQ Accordion ───────────────────────────
+    document.querySelectorAll('.faq__question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const wasActive = item.classList.contains('active');
+
+        // Close all
+        document.querySelectorAll('.faq__item').forEach(i => i.classList.remove('active'));
+
+        // Open clicked (if wasn't open)
+        if (!wasActive) item.classList.add('active');
+      });
+    });
+
+    // ── Copy IBAN ───────────────────────────────
+    function copyIBAN() {
+      const iban = document.getElementById('ibanBox').textContent.trim();
+      navigator.clipboard.writeText(iban).then(() => {
+        const hint = document.getElementById('copyHint');
+        hint.textContent = '¡Copiado!';
+        hint.style.opacity = '0.8';
+        setTimeout(() => {
+          hint.textContent = 'Toca para copiar';
+          hint.style.opacity = '0.5';
+        }, 2000);
+      });
+    }
+
+    // ── RSVP Handler ────────────────────────────
+    function handleRSVP() {
+      const form = document.getElementById('rsvpForm');
+      const inputs = form.querySelectorAll('.rsvp__input');
+      const name = inputs[0].value.trim();
+
+      if (!name) {
+        inputs[0].style.borderColor = '#c0392b';
+        inputs[0].focus();
+        setTimeout(() => inputs[0].style.borderColor = '', 2000);
+        return;
+      }
+
+      // ══════════════════════════════════════════
+      // AQUÍ PUEDES CONECTAR:
+      // - Google Forms (iframe o redirect)
+      // - Tally.so
+      // - Formspree.io
+      // - Tu propio backend
+      // ══════════════════════════════════════════
+
+      const btn = form.querySelector('.rsvp__submit');
+      btn.textContent = '¡CONFIRMADO!';
+      btn.style.background = '#5A7A5A';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        btn.textContent = 'RSVP';
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 3000);
+    }
+
+    // ── Hide scroll hint after first scroll ─────
+    let scrolled = false;
+    window.addEventListener('scroll', () => {
+      if (!scrolled) {
+        scrolled = true;
+        const hint = document.querySelector('.scroll-hint');
+        if (hint) hint.style.opacity = '0';
+      }
+    }, { passive: true });
+  </script>
+</body>
+</html>
